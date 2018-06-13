@@ -14,15 +14,5 @@ namespace Instruments
             Console.WriteLine(msg + "\n");
             Console.ResetColor();
         }
-
-        public static void WriteFraction(double num)
-        {
-            
-            String numStr = num.ToString();
-            String[] numArray = numStr.Split('.');
-            int length = numArray.Length;
-            num = num * Math.Pow(10, length);
-
-        }
     }
 }
