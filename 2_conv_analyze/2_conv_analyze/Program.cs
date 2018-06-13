@@ -7,26 +7,24 @@ using Instruments;
 
 namespace _2_conv_analyze
 {
-    class Program
+    public static class Program
     {
         static void Main(string[] args)
         {
             string answer;
+            Envelope[] envs = new Envelope[1];
             for (; ; )
             {
                 try
                 {
                     Console.Write(" First: ");
-                    Envelope first = new Envelope();
-                    first.SetValues();
-                    Console.Write(" Second: ");
-                    Envelope second = new Envelope();
-                    second.SetValues();
-
-                    if (first > second || first < second)
-                        Console.WriteLine("Can be enclosed");
+                    Envelope first = CreateEnvelope();
+                    Console.Write("\n Second: ");
+                    Envelope second = CreateEnvelope();
+                    if (first > second || first < second || Envelope.DiagCmp(first, second))
+                        Output.Message("Can be enclosed", ConsoleColor.Yellow);
                     else
-                        Console.WriteLine("Can`t be enclosed");
+                        Output.Message("Can`t be enclosed", ConsoleColor.Yellow);
 
                     Console.Write("Do you wanna continue ? \n >> ");
                     answer = Validator.ReadString().ToLower().Trim();
@@ -44,6 +42,17 @@ namespace _2_conv_analyze
                     continue;
                 }
             }
+        }
+        public static Envelope CreateEnvelope()
+        {
+            double side1 = 0, side2 = 0, value;
+            Console.Write("\nEnter first side: \n >> ");
+            value = Validator.ReadDouble();
+            if (Validator.IsPositive(value)) side1 = value;
+            Console.Write("\nEnter second side: \n >> ");
+            value = Validator.ReadDouble();
+            if (Validator.IsPositive(value)) side2 = value;
+            return new Envelope(side1, side2);
         }
     }
 }

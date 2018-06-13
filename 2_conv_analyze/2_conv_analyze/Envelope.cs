@@ -7,34 +7,25 @@ using Instruments;
 
 namespace _2_conv_analyze
 {
-    class Envelope
+    public class Envelope
     {
-        private double a;
+        private double _a;
         public double A
         {
-            get { return a; }
-            set
-            {
-                if (Validator.IsPositive(value)) a = value;
-            }
+            get { return _a; }
+            set => _a = value;
         }
-        private double b;
+        private double _b;
         public double B
         {
-            get { return b; }
-            set
-            {
-                if (Validator.IsPositive(value)) b = value;
-            }
+            get { return _b; }
+            set => _b = value;
         }
 
-        public double Area { get; private set; }
-        public Envelope() { }
         public Envelope(double A, double B)
         {
             this.A = A;
             this.B = B;
-            CalcArea();
         }
 
         public static bool operator >(Envelope c1, Envelope c2)
@@ -49,30 +40,20 @@ namespace _2_conv_analyze
             return result;
         }
 
-        public void SetValues()
+        public static bool DiagCmp(Envelope c1, Envelope c2)
         {
-            for (; ; )
+            double a1 = Math.Max(c1.A, c1.B), b1 = Math.Min(c1.A, c1.B), a2 = Math.Max(c2.A, c2.B), b2 = Math.Min(c2.A, c2.B);
+            if (a1 > a2)
             {
-                try
-                {
-                    Console.Write("\nEnter first side: \n >> ");
-                    A = Validator.ReadDouble();
-                    Console.Write("Enter second side: \n >> ");
-                    B = Validator.ReadDouble();
-                }
-                catch (Exception ex)
-                {
-                    Output.Message(ex.Message, ConsoleColor.Red);
-                    continue;
-                }
-                CalcArea();
-                break;
+                double temp = a1;
+                a1 = a2;
+                a2 = temp;
+                temp = b1;
+                b1 = b2;
+                b2 = temp;
             }
-        }
-
-        private void CalcArea()
-        {
-            Area = A * B;
+            double funcCalc = Math.Pow((a1 + b1) / (a2 + b2), 2) + Math.Pow((a1 - b1) / (a2 - b2), 2);
+            return (funcCalc > 2);
         }
     }
 }

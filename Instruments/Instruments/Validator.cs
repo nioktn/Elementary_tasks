@@ -80,7 +80,7 @@ namespace Instruments
             bool result = value > 0 ? true : false;
             if (!result)
             {
-                throw new Exception("Value can`t be negative");
+                throw new Exception("Value can`t be negative or zero");
             }
             return result;
         }
@@ -89,7 +89,7 @@ namespace Instruments
             bool result = value > 0 ? true : false;
             if (!result)
             {
-                throw new Exception("Value can`t be negative");
+                throw new Exception("Value can`t be negative or zero");
             }
             return result;
         }
