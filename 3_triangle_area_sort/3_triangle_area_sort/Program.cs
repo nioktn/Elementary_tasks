@@ -1,9 +1,6 @@
-﻿using System;
+﻿using Instruments;
+using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Instruments;
 
 namespace _3_triangle_area_sort
 {
@@ -12,28 +9,19 @@ namespace _3_triangle_area_sort
         static List<Triangle> Triangles = new List<Triangle>();
         static void Main(string[] args)
         {
-            String answer, trianglestr;
+            String answer;
+            Output.Message("*Pattern: \"Name, side1, side2, side3\"", ConsoleColor.Cyan);
             for (; ; )
             {
-                Console.Write(" New triangle: \nEnter string: \n >> ");
-                trianglestr = Validator.ClearString(Validator.ReadString());
-                String[] substrings = trianglestr.Split(',');
-
                 try
                 {
-                    String Name = substrings[0].ToString();
-                    double a = double.Parse(substrings[1]);
-                    double b = double.Parse(substrings[2]);
-                    double c = double.Parse(substrings[3]);
-                    Triangle triangle = new Triangle(Name, a, b, c);
-                    Triangles.Add(triangle);
+                    Triangles.Add(GetTriangle());
                 }
                 catch (Exception ex)
                 {
-                    Output.Message(ex.Message + "\n", ConsoleColor.Red);
+                    Output.Message(ex.Message, ConsoleColor.Red);
                     continue;
                 }
-
                 Console.Write("Do you wanna continue ? \n >> ");
                 answer = Validator.ClearString(Validator.ReadString()).ToLower();
                 if (answer.Equals("y") || answer.Equals("yes"))
@@ -52,8 +40,26 @@ namespace _3_triangle_area_sort
             }
         }
 
+        public static Triangle GetTriangle()
+        {
+            String trianglestr;
+            Console.Write(" New triangle: \nEnter string via pattern: \n >> ");
+            trianglestr = Validator.ClearString(Validator.ReadString());
+            String[] substrings = trianglestr.Split(',');
+            String Name = substrings[0].ToString();
+            double a = double.Parse(substrings[1]);
+            double b = double.Parse(substrings[2]);
+            double c = double.Parse(substrings[3]);
+            if (Triangle.isTriangleExists(a, b, c)) return new Triangle(Name, a, b, c);
+            else
+            {
+                throw new Exception("Triangle can`t exits");
+            }
+        }
+
         public static void Display()
         {
+            Console.ForegroundColor = ConsoleColor.Yellow;
             Console.WriteLine("\n========== Triangles List ===========");
             int count = 1;
             foreach (var item in Triangles)
@@ -61,6 +67,7 @@ namespace _3_triangle_area_sort
                 Console.WriteLine("{0}. [Triangle {1}]: {2} cm^2)", count, item.Name, Math.Round(item.Area, 2));
                 count++;
             }
+            Console.ResetColor();
         }
     }
 }

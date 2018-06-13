@@ -1,54 +1,33 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Instruments;
 
 namespace _3_triangle_area_sort
 {
-    class Triangle : IComparable
+    public class Triangle : IComparable
     {
-        double a, b, c;
+        double _a, _b, _c;
         public string Name { get; set; }
         public double A
         {
-            get { return a; }
-            set
-            {
-                if (Validator.IsPositive(value)) a = value;
-            }
+            get { return _a; }
+            set => _a = value;
         }
         public double B
         {
-            get { return b; }
-            set
-            {
-                if (Validator.IsPositive(value)) b = value;
-            }
+            get { return _b; }
+            set => _b = value;
         }
         public double C
         {
-            get { return c; }
-            set
-            {
-                if (Validator.IsPositive(value)) c = value;
-            }
+            get { return _c; }
+            set => _c = value;
         }
         public double Area { get; private set; }
 
-        private void CalculateArea()
+        public static double CalculateTriangleArea(double A, double B, double C)
         {
-            if (A + B > C && A + C > B && B + C > A)
-            {
-                double p = (A + B + C) / 2;
-                Area = Math.Sqrt(p * (p - A) * (p - B) * (p - C));
-            }
-            else
-            {
-                Console.ForegroundColor = ConsoleColor.Red;
-                throw new Exception("Triangle can`t exist");
-            }
+            double p = (A + B + C) / 2;
+            double Area = Math.Sqrt(p * (p - A) * (p - B) * (p - C));
+            return Area;
         }
 
         public int CompareTo(object obj)
@@ -66,7 +45,12 @@ namespace _3_triangle_area_sort
             this.A = A;
             this.B = B;
             this.C = C;
-            CalculateArea();
+            this.Area = CalculateTriangleArea(A, B, C);
+        }
+
+        public static bool isTriangleExists(double A, double B, double C)
+        {
+            return (A + B > C && A + C > B && B + C > A);
         }
     }
 }
