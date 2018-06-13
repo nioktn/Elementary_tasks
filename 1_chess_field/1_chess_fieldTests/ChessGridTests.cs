@@ -1,6 +1,6 @@
-﻿using System;
-using _1_chess_field;
+﻿using _1_chess_field;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using System;
 
 namespace _1_chess_fieldTests
 {

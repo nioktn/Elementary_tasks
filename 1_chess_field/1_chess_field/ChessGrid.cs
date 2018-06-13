@@ -1,53 +1,43 @@
-﻿using Instruments;
-using System;
+﻿using System;
 
 namespace _1_chess_field
 {
     public class ChessGrid
     {
-        int height;
+        int _height;
         public int Height
         {
-            get { return height; }
-            set
-            {
-                if (Validator.IsPositive(value)) height = value;
-            }
+            get { return _height; }
+            set => _height = value;
         }
-        int width;
+        int _width;
         public int Width
         {
-            get { return width; }
-            set
-            {
-                if (Validator.IsPositive(value)) width = value;
-            }
+            get { return _width; }
+            set => _width = value;
         }
-        char agr;
+        char _agr;
+        public char Agr
+        {
+            get => _agr;
+            set => _agr = value;
+        }
 
         public ChessGrid(int height, int width, char agr)
         {
-            try
-            {
-                Height = height;
-                Width = width;
-                this.agr = agr;
-            }
-            catch (Exception ex)
-            {
-                Console.Read();
-                Environment.Exit(0);
-            }
+            Height = height;
+            Width = width;
+            Agr = agr;
         }
         public String GetGrid()
         {
             String row = "", grid = "";
-            for (int i = 0; i < width; i++)
+            for (int i = 0; i < _width; i++)
             {
-                row += agr + " ";
+                row += Agr + " ";
             }
             row = row.Trim();
-            for (int i = 0; i < height; i++)
+            for (int i = 0; i < _height; i++)
             {
                 if (i % 2 != 0)
                 {

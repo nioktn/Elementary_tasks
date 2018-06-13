@@ -63,11 +63,11 @@ namespace Instruments
         }
         public static char ReadChar()
         {
-            String temp = Console.ReadLine();
+            String enteredString = Console.ReadLine();
             char result;
             try
             {
-                result = Char.Parse(temp.Replace(" ", String.Empty).Replace("\t", String.Empty).Substring(0, 1));
+                result = Char.Parse(enteredString.Replace(" ", String.Empty).Replace("\t", String.Empty).Substring(0, 1));
             }
             catch
             {

@@ -12,27 +12,28 @@ namespace _1_chess_field
         static void Main(string[] args)
         {
             Program prog = new Program();
-            int height = 0, width = 0;
+            int height = 0, width = 0, temp;
             char agr = '*';
             for (; ; )
             {
                 try
                 {
                     Console.Write("Enter height: \n >> ");
-                    height = Validator.ReadInt();
+                    temp = Validator.ReadInt();
+                    if (Validator.IsPositive(temp)) height = temp;
                     Console.Write("\nEnter width: \n >> ");
-                    width = Validator.ReadInt();
+                    temp = Validator.ReadInt();
+                    if (Validator.IsPositive(temp)) width = temp;
                     Console.Write("\nEnter aggregator: \n >> ");
                     agr = Validator.ReadChar();
                     ChessGrid cg = new ChessGrid(height, width, agr);
                     Output.Message("\n" + cg.GetGrid(), ConsoleColor.Yellow);
                     break;
                 }
-
                 catch (Exception ex)
                 {
                     Output.Message(ex.Message, ConsoleColor.Red);
-                    Environment.Exit(0);
+                    continue;
                 }
             }
             Console.ReadKey();
