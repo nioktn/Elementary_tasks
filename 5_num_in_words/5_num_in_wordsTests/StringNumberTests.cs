@@ -7,12 +7,16 @@ namespace _5_num_in_wordsTests
     [TestClass]
     public class StringNumberTests
     {
+        public TestContext TestContext { get; set; }
+
+        [DataSource("Microsoft.VisualStudio.TestTools.DataSource.XML",
+            "StringNumbers.xml", "StringNumberRow", DataAccessMethod.Sequential)]
+
         [TestMethod]
-        public void CreateStringTest_9223372036854775807_Str()
+        public void CreateStringTest()
         {
-            long num = 9223372036854775807;
-            String expectedResult = "Девять квинтиллионов двести двадцать три квадриллионa триста семьдесят два триллионa " +
-                "тридцать шесть миллиардов восемьсот пятьдесят четире миллионa семьсот семьдесят пять тысяч восемьсот семь";
+            long num = Convert.ToInt64(TestContext.DataRow["Number"]);
+            String expectedResult = TestContext.DataRow["String"].ToString();
             String actualResult = StringNumber.CreateString(num);
             StringAssert.Equals(expectedResult, actualResult);
         }
