@@ -14,9 +14,12 @@ namespace _7_num_seq
                     Console.Write("Enter num of elements >> ");
                     int N = Validator.ReadInt();
                     Console.Write("Enter minimal squared element >> ");
-                    double MinSqr = Validator.ReadDouble();
-                    Sequence seq1 = new Sequence(N, MinSqr);
-                    Console.WriteLine(seq1.SeqStr);
+                    double minSqr = Validator.ReadDouble();
+                    if (Validator.IsPositive(N) && Validator.IsPositive(minSqr))
+                    {
+                        String sequence = Sequence.GetSeqString(N, minSqr);
+                        Output.Message(sequence, ConsoleColor.Yellow);
+                    }
                     break;
                 }
                 catch (Exception ex)
