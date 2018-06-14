@@ -7,7 +7,7 @@ namespace _6_lucky_tickets
 {
     public class LuckyTicket
     {
-        public static bool Check_ticket_num(String str)
+        public static bool CheckTicketNum(String str)
         {
             string pattern = @"^\d*$";
             Regex rgx = new Regex(pattern);
@@ -15,51 +15,51 @@ namespace _6_lucky_tickets
             return (matches.Count > 0) ? ((str.Length % 2 == 0) ? true : false) : false;
         }
 
-        private static int[] Convert_ticket(String ticket_str)
+        public static int[] ConvertTicket(String ticketStr)
         {
-            int[] int_array = new int[ticket_str.Length];
-            for (int i = 0; i < ticket_str.Length; i++)
+            int[] intArray = new int[ticketStr.Length];
+            for (int i = 0; i < ticketStr.Length; i++)
             {
-                int_array[i] = (int)char.GetNumericValue(ticket_str[i]);
+                intArray[i] = (int)char.GetNumericValue(ticketStr[i]);
             }
-            return int_array;
+            return intArray;
         }
 
         public static bool Simple(int[] mass)
         {
-            int left_sum = 0, right_sum = 0, count = mass.Count() / 2;
+            int leftSum = 0, rightSum = 0, count = mass.Count() / 2;
             for (int i = 0; i < count; i++)
             {
-                left_sum += mass[i];
-                right_sum += mass[count + i];
+                leftSum += mass[i];
+                rightSum += mass[count + i];
             }
-            return (left_sum == right_sum) ? true : false;
+            return (leftSum == rightSum) ? true : false;
         }
 
         public static bool Complex(int[] mass)
         {
-            int even_sum = 0, odd_sum = 0;
+            int evenSum = 0, oddSum = 0;
             foreach (var item in mass)
             {
-                if (item % 2 == 0) even_sum += item;
-                else odd_sum += item;
+                if (item % 2 == 0) evenSum += item;
+                else oddSum += item;
             }
-            return (even_sum == odd_sum) ? true : false;
+            return (evenSum == oddSum) ? true : false;
         }
 
         public static void TestMethods(String min, String max)
         {
-            int count = Int32.Parse(min), simple_count = 0, complex_count = 0;
+            int count = Int32.Parse(min), simpleCount = 0, complexCount = 0;
             String current = min;
             while (count != Int32.Parse(max))
             {
-                if (LuckyTicket.Simple(LuckyTicket.Convert_ticket(current))) simple_count++;
-                if (LuckyTicket.Complex(LuckyTicket.Convert_ticket(current))) complex_count++;
+                if (LuckyTicket.Simple(LuckyTicket.ConvertTicket(current))) simpleCount++;
+                if (LuckyTicket.Complex(LuckyTicket.ConvertTicket(current))) complexCount++;
                 count++;
                 current = count.ToString();
             }
 
-            Output.Message("Simple: " + simple_count + ", Complex: " + complex_count, ConsoleColor.Yellow);
+            Output.Message("Simple: " + simpleCount + ", Complex: " + complexCount, ConsoleColor.Yellow);
         }
     }
 }
