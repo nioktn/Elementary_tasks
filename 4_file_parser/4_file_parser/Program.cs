@@ -1,7 +1,6 @@
 ﻿using Instruments;
 using System;
 using System.IO;
-using System.Collections.Generic;
 
 namespace _4_file_parser
 {
@@ -9,7 +8,7 @@ namespace _4_file_parser
     {
         static void Main(string[] args)
         {
-            string dirPath = @"assets\";
+            string dirPath = @"..\..\assets\";
             Console.WriteLine("Enter name of the file: \n");
             String filePath = dirPath + Validator.ReadString();
             if (File.Exists(filePath))

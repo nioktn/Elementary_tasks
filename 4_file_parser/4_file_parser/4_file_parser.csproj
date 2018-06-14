@@ -58,5 +58,8 @@
       <Name>Instruments</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup>
+    <Content Include="assets\text.txt" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

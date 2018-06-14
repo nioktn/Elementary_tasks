@@ -1,9 +1,7 @@
 ﻿using Instruments;
 using System;
 using System.IO;
-using System.Linq;
 using System.Text.RegularExpressions;
-using _4_file_parser;
 
 namespace _4_file_parser
 {

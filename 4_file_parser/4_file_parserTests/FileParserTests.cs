@@ -1,27 +1,38 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using _4_file_parser;
+﻿using _4_file_parser;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Diagnostics;
+using System.IO;
 
 namespace _4_file_parserTests
 {
     [TestClass()]
     public class FileParserTests
     {
+        static String path = String.Empty;
+        [ClassInitialize]
+        public static void FileInitialize(TestContext context)
+        {
+            path = Path.GetFullPath(@"TextFile.txt");
+            if (!File.Exists(path)) throw new Exception("File doesn't exist");
+            Debug.WriteLine(path);
+        }
+
         [TestMethod()]
         public void EntriesQtyTest()
         {
-            //String path = @"assets\text.txt";
-            //String pattern = "ipsum";
-            //int expectedResult = 5;
-
-            //if(Fil.)
-            //int actualResult = FileParser.EntriesQty(path, pattern);
-
-            //Assert.AreEqual(expectedResult, actualResult);
+            String pattern = "ipsum";
+            int expectedResult = 5;
+            int actualResult = FileParser.EntriesQty(path, pattern);
+            Assert.AreEqual(expectedResult, actualResult);
         }
+
+        //[TestMethod()]
+        //public void ReplaceString()
+        //{
+        //    String pattern = "BB";
+        //    String replace = "AAAA";
+        //    String path = 
+        //}
     }
 }
