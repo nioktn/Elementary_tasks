@@ -10,17 +10,11 @@ namespace _1_chess_fieldTests
         [TestMethod]
         public void GetGridTest()
         {
-            //arrange
-            int height = 3;
-            int width = 3;
-            String expectedResult = "* * *\n * * *\n* * *";
-
-            //act
+            int height = 3, width = 3;
+            String expectedString = "* * *\n * * *\n* * *";
             ChessGrid cg = new ChessGrid(height, width, '*');
-            String actualResult = cg.GetGrid();
-
-            //assert
-            Assert.AreEqual(expectedResult, actualResult);
+            String actualString = cg.GetGrid();
+            Assert.AreEqual(expectedString, actualString);
         }
     }
 }
