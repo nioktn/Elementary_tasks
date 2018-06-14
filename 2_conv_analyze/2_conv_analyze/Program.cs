@@ -1,9 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Instruments;
+﻿using Instruments;
+using System;
 
 namespace _2_conv_analyze
 {

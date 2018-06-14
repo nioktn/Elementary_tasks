@@ -3,12 +3,13 @@ using System;
 using System.IO;
 using System.Linq;
 using System.Text.RegularExpressions;
+using _4_file_parser;
 
 namespace _4_file_parser
 {
     public static class FileParser
     {
-        public static int Entries_qty(String path, String pattern)
+        public static int EntriesQty(String path, String pattern)
         {
             int count;
             try
@@ -16,7 +17,7 @@ namespace _4_file_parser
                 using (StreamReader sr = new StreamReader(path, System.Text.Encoding.Default))
                 {
                     String content = sr.ReadToEnd();
-                    count = new Regex(pattern).Matches(content).Count;
+                    count = new Regex(pattern, RegexOptions.IgnoreCase).Matches(content).Count;
                     return count;
                 }
             }
@@ -27,7 +28,7 @@ namespace _4_file_parser
             }
         }
 
-        public static void Replace_string(string path, string pattern, string replace)
+        public static void ReplaceString(string path, string pattern, string replace)
         {
             if (File.Exists(path))
             {

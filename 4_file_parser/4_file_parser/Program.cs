@@ -7,7 +7,6 @@ namespace _4_file_parser
 {
     class Program
     {
-
         static void Main(string[] args)
         {
             string dirPath = @"assets\";
@@ -28,16 +27,14 @@ namespace _4_file_parser
                                 String search;
                                 Console.Write(" \nEntries search:\nEnter your string for search:\n >> ");
                                 search = Validator.ReadString();
-                                Console.ForegroundColor = ConsoleColor.Blue;
-                                Output.Message("There are " + FileParser.Entries_qty(filePath, search) + " entries of your string\n", ConsoleColor.Yellow);
-                                Console.ResetColor();
+                                Output.Message("There are " + FileParser.EntriesQty(filePath, search) + " entries of your string\n", ConsoleColor.Yellow);
                                 break;
                             case (2):
                                 Console.Write("Enter pattern string: \n >> ");
                                 string pattern = Validator.ReadString();
                                 Console.Write("Enter replace string: \n >> ");
                                 string replace = Validator.ReadString();
-                                FileParser.Replace_string(filePath, pattern, replace);
+                                FileParser.ReplaceString(filePath, pattern, replace);
                                 break;
                             case (0):
                                 Environment.Exit(0);

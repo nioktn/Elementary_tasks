@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "4_file_parser", "4_file_par
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Instruments", "..\Instruments\Instruments\Instruments.csproj", "{A44684E7-1AEC-43C7-9E33-1628E6EFFEF0}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "4_file_parserTests", "4_file_parserTests\4_file_parserTests.csproj", "{D32EB02F-0A89-4854-BE98-964A888F8072}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{A44684E7-1AEC-43C7-9E33-1628E6EFFEF0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A44684E7-1AEC-43C7-9E33-1628E6EFFEF0}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A44684E7-1AEC-43C7-9E33-1628E6EFFEF0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D32EB02F-0A89-4854-BE98-964A888F8072}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D32EB02F-0A89-4854-BE98-964A888F8072}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D32EB02F-0A89-4854-BE98-964A888F8072}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D32EB02F-0A89-4854-BE98-964A888F8072}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

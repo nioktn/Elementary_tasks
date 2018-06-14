@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 using System.Text.RegularExpressions;
 
 namespace _5_num_in_words
@@ -67,35 +65,35 @@ namespace _5_num_in_words
             switch (powIndex)
             {
                 case (1):
-                    result += HundredsBuilder(num, num.ToString().Length) + " " + ((num != 0) ? Powers(0) : "");
+                    result += HundredsBuilder(num, num.ToString().Length) + " " + ((num != 0) ? Powers(Pows.Thousand) : "");
                     result += (num % 10) > 1 && (num % 10) < 5 ? "и" : (num % 10) == 1 ? "а" : "";
                     if (num % 100 > 10 && num % 100 < 20) result = result.Remove(result.Length - 1);
                     if ((num % 10 == 1 && num % 100 != 11) || (num % 10 == 2 && num % 100 != 12))
                         result = result.Replace("один ", "одна ").Replace("два ", "две ");
                     return result;
                 case (2):
-                    result = FixEnding(num, result, 1);
+                    result = FixEnding(num, result, Pows.Million);
                     return result;
                 case (3):
-                    result = FixEnding(num, result, 2);
+                    result = FixEnding(num, result, Pows.Billion);
                     return result;
                 case (4):
-                    result = FixEnding(num, result, 3);
+                    result = FixEnding(num, result, Pows.Trillion);
                     return result;
                 case (5):
-                    result = FixEnding(num, result, 4);
+                    result = FixEnding(num, result, Pows.Quadrillion);
                     return result;
                 case (6):
-                    result = FixEnding(num, result, 5);
+                    result = FixEnding(num, result, Pows.Quintillion);
                     return result;
                 default:
                     return "";
             }
         }
 
-        private static String FixEnding(long num, String numStr, int powNum)
+        private static String FixEnding(long num, String numStr, Pows pw)
         {
-            numStr += HundredsBuilder(num, num.ToString().Length) + " " + ((num != 0) ? Powers(powNum) : "");
+            numStr += HundredsBuilder(num, num.ToString().Length) + " " + ((num != 0) ? Powers(pw) : "");
             numStr += (num == 0) ? "" : (((num % 10 > 1 && num % 10 < 5) && !(num % 100 > 10 && num % 100 < 20)) ? "a" : (num % 10) == 1 ? "" : "ов");
             return numStr;
         }
@@ -218,25 +216,30 @@ namespace _5_num_in_words
             }
 
         }
-        private static string Powers(long number)
+        private static string Powers(Pows pw)
         {
-            switch (number)
+            switch (pw)
             {
-                case (0):
+                case (Pows.Thousand):
                     return "тысяч";
-                case (1):
+                case (Pows.Million):
                     return "миллион";
-                case (2):
+                case (Pows.Billion):
                     return "миллиард";
-                case (3):
+                case (Pows.Trillion):
                     return "триллион";
-                case (4):
+                case (Pows.Quadrillion):
                     return "квадриллион";
-                case (5):
+                case (Pows.Quintillion):
                     return "квинтиллион";
                 default:
                     return String.Empty;
             }
+        }
+
+        public enum Pows
+        { 
+            Thousand, Million, Billion, Trillion, Quadrillion, Quintillion
         }
     }
 }
