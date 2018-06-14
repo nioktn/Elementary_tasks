@@ -1,0 +1,8 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<TriangleData>
+  <Trianglerow Name="Triangle1" A="2" B="3" C="4" Area="2.904738" Perimeter="9"/>
+  <Trianglerow Name="Triangle2" A="5" B="9" C="13" Area="16.068214" Perimeter="28"/>
+  <Trianglerow Name="Triangle3" A="5" B="7" C="3" Area="6.495191" Perimeter="15"/>
+  <Trianglerow Name="Triangle4" A="8" B="3" C="8" Area="11.787175" Perimeter="19"/>
+  <Trianglerow Name="Triangle5" A="9" B="3" C="7" Area="8.785642" Perimeter="19"/>
+</TriangleData>

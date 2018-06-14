@@ -1,6 +1,6 @@
-﻿using System;
+﻿using Instruments;
+using System;
 using System.Text;
-using Instruments;
 
 namespace _5_num_in_words
 {

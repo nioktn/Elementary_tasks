@@ -1,51 +1,50 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using _3_triangle_area_sort;
+﻿using _3_triangle_area_sort;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace _3_triangle_area_sort.Tests
+namespace _3_triangle_area_sortTests
 {
-    [TestClass()]
+    [TestClass]
     public class TriangleTests
     {
-        [TestMethod()]
-        public void CalculateAreaTest_567_14697()
-        {
-            double a = 5;
-            double b = 6;
-            double c = 7;
-            double delta = 0.0001;
-            double expectedResult = 14.697;
+        public TestContext TestContext { get; set; }
 
-            double actualResult = Triangle.CalculateTriangleArea(a, b, c);
+        [DataSource("Microsoft.VisualStudio.TestTools.DataSource.XML", 
+            "Triangles.xml", "Trianglerow", DataAccessMethod.Sequential)]
 
-            Assert.AreEqual(expectedResult, actualResult, delta);
-        }
         [TestMethod]
-        public void isTriangleExistsTest_115_false()
+        public void CalculateAreaTest()
         {
-            double a = 1;
-            double b = 1;
-            double c = 5;
-            bool expectedResult = false;
-
-            bool actualResult = Triangle.isTriangleExists(a, b, c);
-
-            Assert.AreEqual(expectedResult, actualResult);
+            String Name = TestContext.DataRow["Name"].ToString();
+            double A = Convert.ToDouble(TestContext.DataRow["A"]),
+                B = Convert.ToDouble(TestContext.DataRow["B"]),
+                C = Convert.ToDouble(TestContext.DataRow["C"]),
+                expectedArea = Convert.ToDouble(TestContext.DataRow["Area"]);
+            Triangle tr = new Triangle(Name, A, B, C);
+            Assert.AreEqual(expectedArea, Triangle.CalculateTriangleArea(A, B, C), 0.001,
+                "Calculated area value is different than expected");
         }
+
+        [DataSource("Microsoft.VisualStudio.TestTools.DataSource.XML",
+            "Triangles.xml", "Trianglerow", DataAccessMethod.Sequential)]
+
+        [TestMethod]
+        public void isTriangleExistsTest()
+        {
+            double A = Convert.ToDouble(TestContext.DataRow["A"]),
+                B = Convert.ToDouble(TestContext.DataRow["B"]),
+                C = Convert.ToDouble(TestContext.DataRow["C"]);
+            Assert.IsTrue(Triangle.isTriangleExists(A, B, C),
+                "There are problems in isTriangleExists method work");
+        }
+
         [TestMethod]
         public void CompareToTest_334_552_false()
         {
             Triangle first = new Triangle("first", 3, 3, 4);
             Triangle second = new Triangle("second", 5, 5, 2);
-            bool expectedResult = false;
-
-            bool actualResult = first.CompareTo(second) > 0;
-
-            Assert.AreEqual(expectedResult, actualResult);
+            Assert.IsFalse(first.CompareTo(second) > 0,
+                "There are problems in CompareTo method work");
         }
     }
 }
