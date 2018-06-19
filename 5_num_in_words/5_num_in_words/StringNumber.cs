@@ -7,6 +7,44 @@ namespace _5_num_in_words
 {
     public static class StringNumber
     {
+        //public delegate String ConvertOperations();
+        //        private static Dictionary<long, ConvertOperations> _numbersDictionary;
+
+        //        private static void FillDictionary()
+        //        {
+        //            _numbersDictionary = new Dictionary<long, ConvertOperations>
+        //            {
+        //                {1, () => "один" },
+        //                {1, () => "два" },
+        //                {1, () => "три" },
+        //                {1, () => "четыре" },
+        //                {1, () => "пять" },
+        //                {1, () => "шесть" },
+        //                {1, () => "семь" },
+        //                {1, () => "восемь" },
+        //                {1, () => "девять" },
+        //                {1, () => "десять" },
+        //                {1, () => "одинадцать" },
+        //                {1, () => "двенадцать" },
+        //                {1, () => "тринадцать" },
+        //                {1, () => "четырнадцать" },
+        //                {1, () => "пятнадцать" },
+        //                {1, () => "шестнадцать" },
+        //                {1, () => "" },
+        //                {1, () => "" },
+        //                {1, () => "" },
+        //                {1, () => "" },
+        //                {1, () => "" },
+        //                {1, () => "" },
+        //                {1, () => "" },
+        //                {1, () => "" },
+        //                {1, () => "" },
+        //                {1, () => "" },
+
+        //            };
+        //        }
+        //    }
+        //}
         public static String CreateString(long number)
         {
             String result = "";
@@ -237,8 +275,10 @@ namespace _5_num_in_words
             }
         }
 
+
+
         public enum Pows
-        { 
+        {
             Thousand, Million, Billion, Trillion, Quadrillion, Quintillion
         }
     }
