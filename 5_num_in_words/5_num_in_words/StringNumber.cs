@@ -7,44 +7,58 @@ namespace _5_num_in_words
 {
     public static class StringNumber
     {
-        //public delegate String ConvertOperations();
-        //        private static Dictionary<long, ConvertOperations> _numbersDictionary;
+        public delegate String ConvertOperations(int rank);
+        private static Dictionary<long, ConvertOperations> _numbersDictionary;
 
-        //        private static void FillDictionary()
-        //        {
-        //            _numbersDictionary = new Dictionary<long, ConvertOperations>
-        //            {
-        //                {1, () => "один" },
-        //                {1, () => "два" },
-        //                {1, () => "три" },
-        //                {1, () => "четыре" },
-        //                {1, () => "пять" },
-        //                {1, () => "шесть" },
-        //                {1, () => "семь" },
-        //                {1, () => "восемь" },
-        //                {1, () => "девять" },
-        //                {1, () => "десять" },
-        //                {1, () => "одинадцать" },
-        //                {1, () => "двенадцать" },
-        //                {1, () => "тринадцать" },
-        //                {1, () => "четырнадцать" },
-        //                {1, () => "пятнадцать" },
-        //                {1, () => "шестнадцать" },
-        //                {1, () => "" },
-        //                {1, () => "" },
-        //                {1, () => "" },
-        //                {1, () => "" },
-        //                {1, () => "" },
-        //                {1, () => "" },
-        //                {1, () => "" },
-        //                {1, () => "" },
-        //                {1, () => "" },
-        //                {1, () => "" },
+        public static void FillDictionary()
+        {
+            _numbersDictionary = new Dictionary<long, ConvertOperations>
+                    {
+                        {1, (rank) => { return "один"; } },
+                        {2, (rank) => "два" },
+                        {3, () => "три" },
+                        {4, () => "четыре" },
+                        {5, () => "пять" },
+                        {6, () => "шесть" },
+                        {7, () => "семь" },
+                        {8, () => "восемь" },
+                        {9, () => "девять" },
+                        {10, () => "десять" },
+                        {11, () => "одинадцать" },
+                        {12, () => "двенадцать" },
+                        {13, () => "тринадцать" },
+                        {14, () => "четырнадцать" },
+                        {15, () => "пятнадцать" },
+                        {16, () => "шестнадцать" },
+                        {17, () => "семнадцать" },
+                        {18, () => "восемьнадцать" },
+                        {19, () => "девятьнадцать" },
+                        {20, () => "двадцать" },
+                        {30, () => "тридцать" },
+                        {40, () => "сорок" },
+                        {50, () => "пятьдесят" },
+                        {60, () => "шестьдесят" },
+                        {70, () => "семьдесят" },
+                        {80, () => "восемьдесят" },
+                        {90, () => "девяносто" },
+                        {100, () => "сто" },
+                        {200, () => "двести" },
+                        {300, () => "триста" },
+                        {400, () => "четыреста" },
+                        {500, () => "пятьсот" },
+                        {600, () => "шестьсот" },
+                        {700, () => "семьсот" },
+                        {800, () => "восемьсот" },
+                        {900, () => "девятьсот" },
+                        {103, () => "тысяч" },
+                        {106, () => "миллион" },
+                        {109, () => "миллиард" },
+                        {1012, () => "триллион" },
+                        {1015, () => "квадриллион" },
+                        {1018, () => "квинтиллион" }
+                    };
+        }
 
-        //            };
-        //        }
-        //    }
-        //}
         public static String CreateString(long number)
         {
             String result = "";
@@ -85,17 +99,28 @@ namespace _5_num_in_words
                 case (0):
                     return "";
                 case (1):
-                    return Units(num);
+                    // return Units(num);
+                    return _numbersDictionary[num]();
                 case (2):
                     if (num < 20)
-                        return Units(num);
-                    else return Dozens(num / 10) + " " + Units(num % 10);
+                        return _numbersDictionary[num]();
+                    else return _numbersDictionary[num % 100 / 10 * 10]() + " " + _numbersDictionary[num % 10]();
                 case (3):
                     return Hundreds(num / 100) + " " + HundredsBuilder(num % 100, 2);
                 default:
                     return String.Empty;
             }
         }
+
+        private static string HundredsBuilder2(long num, int rank)
+        {
+            if (num == 0) return "";
+            if (num > 0 && num < 20) _numbersDictionary[num](5);
+        
+            return String.Empty;
+        }
+
+
 
         private static string PowBuilder(long num, long powIndex)
         {
@@ -274,9 +299,6 @@ namespace _5_num_in_words
                     return String.Empty;
             }
         }
-
-
-
         public enum Pows
         {
             Thousand, Million, Billion, Trillion, Quadrillion, Quintillion
