@@ -8,6 +8,7 @@ namespace _5_num_in_words
     {
         static void Main(string[] args)
         {
+            StringNumber.FillDictionary();
             Console.OutputEncoding = Encoding.UTF8;
             for (; ; )
             {

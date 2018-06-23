@@ -7,44 +7,61 @@ namespace _5_num_in_words
 {
     public static class StringNumber
     {
-        //public delegate String ConvertOperations();
-        //        private static Dictionary<long, ConvertOperations> _numbersDictionary;
+        public delegate String ConvertOperations();
+        private static Dictionary<long, ConvertOperations> _numbersDictionary;
 
-        //        private static void FillDictionary()
-        //        {
-        //            _numbersDictionary = new Dictionary<long, ConvertOperations>
-        //            {
-        //                {1, () => "один" },
-        //                {1, () => "два" },
-        //                {1, () => "три" },
-        //                {1, () => "четыре" },
-        //                {1, () => "пять" },
-        //                {1, () => "шесть" },
-        //                {1, () => "семь" },
-        //                {1, () => "восемь" },
-        //                {1, () => "девять" },
-        //                {1, () => "десять" },
-        //                {1, () => "одинадцать" },
-        //                {1, () => "двенадцать" },
-        //                {1, () => "тринадцать" },
-        //                {1, () => "четырнадцать" },
-        //                {1, () => "пятнадцать" },
-        //                {1, () => "шестнадцать" },
-        //                {1, () => "" },
-        //                {1, () => "" },
-        //                {1, () => "" },
-        //                {1, () => "" },
-        //                {1, () => "" },
-        //                {1, () => "" },
-        //                {1, () => "" },
-        //                {1, () => "" },
-        //                {1, () => "" },
-        //                {1, () => "" },
+        public static void FillDictionary()
+        {
+            _numbersDictionary = new Dictionary<long, ConvertOperations>
+                    {
+                        {1, () => "один" },
+                        {2, () => "два" },
+                        {3, () => "три" },
+                        {4, () => "четыре" },
+                        {5, () => "пять" },
+                        {6, () => "шесть" },
+                        {7, () => "семь" },
+                        {8, () => "восемь" },
+                        {9, () => "девять" },
+                        {10, () => "десять" },
+                        {11, () => "одинадцать" },
+                        {12, () => "двенадцать" },
+                        {13, () => "тринадцать" },
+                        {14, () => "четырнадцать" },
+                        {15, () => "пятнадцать" },
+                        {16, () => "шестнадцать" },
+                        {17, () => "" },
+                        {18, () => "" },
+                        {19, () => "" },
+                        {20, () => "" },
+                        {30, () => "" },
+                        {40, () => "" },
+                        {50, () => "" },
+                        {60, () => "" },
+                        {70, () => "" },
+                        {80, () => "" },
+                        {90, () => "" },
+                        {100, () => "" },
+                        {200, () => "" },
+                        {300, () => "" },
+                        {400, () => "" },
+                        {500, () => "" },
+                        {600, () => "" },
+                        {700, () => "" },
+                        {800, () => "" },
+                        {900, () => "" },
+                        {103, () => "" },
+                        {106, () => "" },
+                        {109, () => "" },
+                        {1012, () => "" },
+                        {1015, () => "" },
+                        {1018, () => "" },
+                        {1021, () => "" },
+                        {1024, () => "" },
+                        {1027, () => "" }
+                    };
+        }
 
-        //            };
-        //        }
-        //    }
-        //}
         public static String CreateString(long number)
         {
             String result = "";
@@ -85,7 +102,8 @@ namespace _5_num_in_words
                 case (0):
                     return "";
                 case (1):
-                    return Units(num);
+                    // return Units(num);
+                    return _numbersDictionary[num]();
                 case (2):
                     if (num < 20)
                         return Units(num);
@@ -274,9 +292,6 @@ namespace _5_num_in_words
                     return String.Empty;
             }
         }
-
-
-
         public enum Pows
         {
             Thousand, Million, Billion, Trillion, Quadrillion, Quintillion
