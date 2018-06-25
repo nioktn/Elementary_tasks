@@ -13,7 +13,7 @@ namespace _4_file_parserTests
         [ClassInitialize]
         public static void FileInitialize(TestContext context)
         {
-            path = Path.GetFullPath(@"TextFile.txt");
+            path = Path.GetFullPath(@"text.txt");
             if (!File.Exists(path)) throw new Exception("File doesn't exist");
             Debug.WriteLine(path);
         }
@@ -26,13 +26,5 @@ namespace _4_file_parserTests
             int actualResult = FileParser.EntriesQty(path, pattern);
             Assert.AreEqual(expectedResult, actualResult);
         }
-
-        //[TestMethod()]
-        //public void ReplaceString()
-        //{
-        //    String pattern = "BB";
-        //    String replace = "AAAA";
-        //    String path = 
-        //}
     }
 }

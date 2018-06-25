@@ -58,8 +58,9 @@ namespace _6_lucky_tickets
                 count++;
                 current = count.ToString();
             }
-
-            Output.Message("Simple: " + simpleCount + ", Complex: " + complexCount, ConsoleColor.Yellow);
+            Output.Message("Simple: " + simpleCount + ", Complex: "
+                + complexCount + (simpleCount > complexCount ? "\nSimple wins!" : "\nComplex wins!"),
+                ConsoleColor.Yellow);
         }
     }
 }
