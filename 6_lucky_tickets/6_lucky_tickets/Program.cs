@@ -13,31 +13,22 @@ namespace _6_lucky_tickets
             String min, max;
             for (; ; )
             {
-                try
+                Console.Write("Enter min value:\n >> ");
+                min = Validator.ReadString();
+                Console.Write("Enter max value:\n >> ");
+                max = Validator.ReadString();
+                if (!LuckyTicket.CheckTicketNum(max) || !LuckyTicket.CheckTicketNum(min) || (Int32.Parse(min) > Int32.Parse(max)))
                 {
-                    Console.Write("Enter min value:\n >> ");
-                    min = Validator.ReadString();
-                    Console.Write("Enter max value:\n >> ");
-                    max = Validator.ReadString();
-                    if (!LuckyTicket.CheckTicketNum(max) || !LuckyTicket.CheckTicketNum(min) || (Int32.Parse(min) > Int32.Parse(max)))
-                    {
-                        throw new Exception("Ticket has wrong format, try again\n");
-                    }
-
-                    else
-                    {
-                        LuckyTicket.TestMethods(min, max);
-                        break;
-                    }
-                }
-                catch (Exception ex)
-                {
-                    Output.Message(ex.Message, ConsoleColor.Red);
+                    Output.Message("Ticket has wrong format, try again\n", ConsoleColor.Red);
                     continue;
+                }
+                else
+                {
+                    LuckyTicket.TestMethods(min, max);
+                    break;
                 }
             }
             Console.Read();
         }
-
     }
 }
