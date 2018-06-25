@@ -17,7 +17,7 @@ namespace _2_conv_analyze
                 if (first > second || first < second || Envelope.DiagCmp(first, second))
                     Output.Message("Can be enclosed", ConsoleColor.Yellow);
                 else
-                    Output.Message("Can`t be enclosed", ConsoleColor.Yellow);
+                    Output.Message("Can't be enclosed", ConsoleColor.Yellow);
 
                 Console.Write("Do you wanna continue ? \n >> ");
                 answer = Validator.ReadString().ToLower().Trim();

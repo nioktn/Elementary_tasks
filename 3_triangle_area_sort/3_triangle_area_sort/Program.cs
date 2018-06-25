@@ -53,7 +53,7 @@ namespace _3_triangle_area_sort
             if (Triangle.isTriangleExists(a, b, c)) return new Triangle(Name, a, b, c);
             else
             {
-                throw new Exception("Triangle can`t exits");
+                throw new Exception("Triangle with entered sides can`t exist");
             }
         }
 

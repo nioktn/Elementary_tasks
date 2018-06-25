@@ -16,13 +16,11 @@ namespace _2_conv_analyze
             get { return _b; }
             set => _b = value;
         }
-
         public Envelope(double A, double B)
         {
             this.A = A;
             this.B = B;
         }
-
         public static bool operator >(Envelope c1, Envelope c2)
         {
             bool result = (((c1.A > c2.A) && (c1.B > c2.B)) || ((c1.A > c2.B) && (c1.B > c2.A))) ? true : false;

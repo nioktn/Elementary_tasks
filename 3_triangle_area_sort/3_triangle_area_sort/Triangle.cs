@@ -5,7 +5,6 @@ namespace _3_triangle_area_sort
     public class Triangle : IComparable
     {
         double _a, _b, _c;
-        public string Name { get; set; }
         public double A
         {
             get { return _a; }
@@ -21,23 +20,8 @@ namespace _3_triangle_area_sort
             get { return _c; }
             set => _c = value;
         }
+        public string Name { get; set; }
         public double Area { get; private set; }
-
-        public static double CalculateTriangleArea(double A, double B, double C)
-        {
-            double p = (A + B + C) / 2;
-            double Area = Math.Sqrt(p * (p - A) * (p - B) * (p - C));
-            return Area;
-        }
-
-        public int CompareTo(object obj)
-        {
-            Triangle t = (Triangle)obj;
-            if (t != null)
-                return this.Area.CompareTo(t.Area);
-            else
-                throw new Exception("Can`t be compared");
-        }
 
         public Triangle(string Name, double A, double B, double C)
         {
@@ -46,7 +30,20 @@ namespace _3_triangle_area_sort
             this.B = B;
             this.C = C;
             this.Area = CalculateTriangleArea(A, B, C);
+        }        
+
+        public static double CalculateTriangleArea(double A, double B, double C)
+        {
+            double p = (A + B + C) / 2;
+            double Area = Math.Sqrt(p * (p - A) * (p - B) * (p - C));
+            return Area;
         }
+
+        public int CompareTo(Object obj)
+        {
+            Triangle tr = obj as Triangle;
+            return this.Area.CompareTo(tr.Area);
+        }        
 
         public static bool isTriangleExists(double A, double B, double C)
         {

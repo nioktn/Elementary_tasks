@@ -7,47 +7,9 @@ namespace _5_num_in_words
 {
     public static class StringNumber
     {
-        //public delegate String ConvertOperations();
-        //        private static Dictionary<long, ConvertOperations> _numbersDictionary;
-
-        //        private static void FillDictionary()
-        //        {
-        //            _numbersDictionary = new Dictionary<long, ConvertOperations>
-        //            {
-        //                {1, () => "один" },
-        //                {1, () => "два" },
-        //                {1, () => "три" },
-        //                {1, () => "четыре" },
-        //                {1, () => "пять" },
-        //                {1, () => "шесть" },
-        //                {1, () => "семь" },
-        //                {1, () => "восемь" },
-        //                {1, () => "девять" },
-        //                {1, () => "десять" },
-        //                {1, () => "одинадцать" },
-        //                {1, () => "двенадцать" },
-        //                {1, () => "тринадцать" },
-        //                {1, () => "четырнадцать" },
-        //                {1, () => "пятнадцать" },
-        //                {1, () => "шестнадцать" },
-        //                {1, () => "" },
-        //                {1, () => "" },
-        //                {1, () => "" },
-        //                {1, () => "" },
-        //                {1, () => "" },
-        //                {1, () => "" },
-        //                {1, () => "" },
-        //                {1, () => "" },
-        //                {1, () => "" },
-        //                {1, () => "" },
-
-        //            };
-        //        }
-        //    }
-        //}
         public static String CreateString(long number)
         {
-            String result = "";
+            String result = String.Empty;
             bool isPositive = true;
             if (number < 0)
             {
@@ -60,7 +22,7 @@ namespace _5_num_in_words
                 return "Ноль";
             }
             List<long> pows = GetTriplets(number);
-            for (int i = pows.Count - 1; i > 0; i--)
+            for (int i = pows.Count-1; i > 0; i--)
             {
                 result += PowBuilder(pows[i], i) + " ";
             }
@@ -78,12 +40,12 @@ namespace _5_num_in_words
             return sb.ToString();
         }
 
-        private static string HundredsBuilder(long num, long N)
+        private static string HundredsBuilder(long num, long numLenght)
         {
-            switch (N)
+            switch (numLenght)
             {
                 case (0):
-                    return "";
+                    return String.Empty;
                 case (1):
                     return Units(num);
                 case (2):
@@ -103,8 +65,8 @@ namespace _5_num_in_words
             switch (powIndex)
             {
                 case (1):
-                    result += HundredsBuilder(num, num.ToString().Length) + " " + ((num != 0) ? Powers(Pows.Thousand) : "");
-                    result += (num % 10) > 1 && (num % 10) < 5 ? "и" : (num % 10) == 1 ? "а" : "";
+                    result += HundredsBuilder(num, num.ToString().Length) + " " + ((num != 0) ? Powers(Pows.Thousand) : String.Empty);
+                    result += (num % 10) > 1 && (num % 10) < 5 ? "и" : (num % 10) == 1 ? "а" : String.Empty;
                     if (num % 100 > 10 && num % 100 < 20) result = result.Remove(result.Length - 1);
                     if ((num % 10 == 1 && num % 100 != 11) || (num % 10 == 2 && num % 100 != 12))
                         result = result.Replace("один ", "одна ").Replace("два ", "две ");
@@ -131,8 +93,8 @@ namespace _5_num_in_words
 
         private static String FixEnding(long num, String numStr, Pows pw)
         {
-            numStr += HundredsBuilder(num, num.ToString().Length) + " " + ((num != 0) ? Powers(pw) : "");
-            numStr += (num == 0) ? "" : (((num % 10 > 1 && num % 10 < 5) && !(num % 100 > 10 && num % 100 < 20)) ? "a" : (num % 10) == 1 ? "" : "ов");
+            numStr += HundredsBuilder(num, num.ToString().Length) + " " + ((num != 0) ? Powers(pw) : String.Empty);
+            numStr += (num == 0) ? String.Empty : (((num % 10 > 1 && num % 10 < 5) && !(num % 100 > 10 && num % 100 < 20)) ? "a" : (num % 10) == 1 ? String.Empty : "ов");
             return numStr;
         }
 
@@ -274,9 +236,6 @@ namespace _5_num_in_words
                     return String.Empty;
             }
         }
-
-
-
         public enum Pows
         {
             Thousand, Million, Billion, Trillion, Quadrillion, Quintillion

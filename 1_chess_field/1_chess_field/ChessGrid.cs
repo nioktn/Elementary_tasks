@@ -31,7 +31,7 @@ namespace _1_chess_field
         }
         public String GetGrid()
         {
-            String row = "", grid = "";
+            String row = String.Empty, grid = String.Empty;
             for (int i = 0; i < _width; i++)
             {
                 row += Agr + " ";
@@ -39,10 +39,7 @@ namespace _1_chess_field
             row = row.Trim();
             for (int i = 0; i < _height; i++)
             {
-                if (i % 2 != 0)
-                {
-                    grid += " ";
-                }
+                grid += i % 2 != 0 ? " " : String.Empty;
                 grid += row + "\n";
             }
             return grid.Trim();

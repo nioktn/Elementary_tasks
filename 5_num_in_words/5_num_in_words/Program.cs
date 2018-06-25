@@ -8,7 +8,7 @@ namespace _5_num_in_words
     {
         static void Main(string[] args)
         {
-            Console.OutputEncoding = Encoding.UTF8;
+            Console.OutputEncoding = Encoding.Unicode;
             for (; ; )
             {
                 Console.Write(" Choose one option >> \n1. Enter new number\n0. Exit application\n");
@@ -16,7 +16,7 @@ namespace _5_num_in_words
                 switch (choise)
                 {
                     case (1):
-                        Console.Write("Enter long number \n");
+                        Console.Write("Enter long integer number \n");
                         long number = Validator.ReadLong2();
                         String str = StringNumber.CreateString(number);
                         Output.Message(String.Format("Your string: \n{0}\n", str), ConsoleColor.DarkYellow);

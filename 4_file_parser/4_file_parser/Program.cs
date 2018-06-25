@@ -24,14 +24,17 @@ namespace _4_file_parser
                             String search;
                             Console.Write(" \nEntries search:\nEnter your string for search:\n >> ");
                             search = Validator.ReadString();
-                            Output.Message("There are " + FileParser.EntriesQty(filePath, search) + " entries of your string\n", ConsoleColor.Yellow);
+                            Output.Message(search.Equals(String.Empty) ? "Search string shouldn't be empty\n" : 
+                                String.Format("There are {0} entries of your string\n",
+                                FileParser.EntriesQty(filePath, search)), ConsoleColor.Yellow);
                             break;
                         case (2):
                             Console.Write("Enter pattern string: \n >> ");
                             string pattern = Validator.ReadString();
                             Console.Write("Enter replace string: \n >> ");
                             string replace = Validator.ReadString();
-                            FileParser.ReplaceString(filePath, pattern, replace);
+                            if (pattern.Equals(String.Empty)) Output.Message("Pattern string couldn't be empty\n", ConsoleColor.Red);
+                            else FileParser.ReplaceString(filePath, pattern, replace);
                             break;
                         case (0):
                             Environment.Exit(0);
