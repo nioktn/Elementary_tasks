@@ -44,7 +44,7 @@ namespace _8_Fibonacci_series
             Output.Message("\n Fibonacci series output:", ConsoleColor.Yellow);
             foreach (var item in collection)
             {
-                Output.Message(item + " ", ConsoleColor.Yellow);
+                Output.Message(String.Format("  {0} ", item), ConsoleColor.Yellow);
             }
             Console.WriteLine("\n");
         }

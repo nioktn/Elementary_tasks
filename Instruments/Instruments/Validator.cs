@@ -212,7 +212,7 @@ namespace Instruments
                 isValid = Int64.TryParse(str, out long result);
                 if (!isValid)
                 {
-                    Output.Message("Invalid input! Enter integer number!", ConsoleColor.Red);
+                    Output.Message("Invalid input! Enter long integer number!", ConsoleColor.Red);
                     Console.Write(" >> ");
                 }
                 else Number = result;
@@ -232,7 +232,7 @@ namespace Instruments
                 isValid = Int64.TryParse(str, out long result);
                 if (!isValid)
                 {
-                    Output.Message("Invalid input! Enter long number!", ConsoleColor.Red);
+                    Output.Message("Invalid input! Enter long integer number!", ConsoleColor.Red);
                     Console.Write(" >> ");
                 }
                 else

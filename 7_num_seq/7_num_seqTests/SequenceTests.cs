@@ -11,8 +11,8 @@ namespace _7_num_seqTests
         public void GetSeqStringTest_10_83_seqStr()
         {
             int N = 10;
-            double minSqr = 83;
-            String expectedResult = "10, 11, 12, 13, 14, 15, 16, 17, 18, 19";
+            double minSqr = 288;
+            String expectedResult = "17, 18, 19, 20, 21, 22, 23, 24, 25, 26";
             String actualResult = Sequence.GetSeqString(N, minSqr);
             StringAssert.Equals(expectedResult, actualResult);
         }

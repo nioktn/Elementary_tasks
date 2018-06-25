@@ -9,24 +9,13 @@ namespace _7_num_seq
         {
             for (; ; )
             {
-                try
-                {
-                    Console.Write("Enter num of elements >> ");
-                    int N = Validator.ReadInt();
-                    Console.Write("Enter minimal squared element >> ");
-                    double minSqr = Validator.ReadDouble();
-                    if (Validator.IsPositive(N) && Validator.IsPositive(minSqr))
-                    {
-                        String sequence = Sequence.GetSeqString(N, minSqr);
-                        Output.Message(sequence, ConsoleColor.Yellow);
-                    }
-                    break;
-                }
-                catch (Exception ex)
-                {
-                    Output.Message(ex.Message, ConsoleColor.Red);
-                    continue;
-                }
+                Console.Write("Enter num of elements:");
+                int N = Validator.ReadInt2(true);
+                Console.Write("Enter minimal squared element:");
+                double minSqr = Validator.ReadDouble2(true);
+                String sequence = Sequence.GetSeqString(N, minSqr);
+                Output.Message(sequence, ConsoleColor.Yellow);
+                break;
             }
             Console.Read();
         }
