@@ -13,13 +13,10 @@ namespace _3_triangle_area_sort
             Output.Message("*Pattern: \"Name, side1, side2, side3\"", ConsoleColor.Cyan);
             for (; ; )
             {
-                try
-                {
-                    Triangles.Add(GetTriangle());
-                }
+                try { Triangles.Add(GetTriangle()); }
                 catch (Exception ex)
                 {
-                    Output.Message(ex.Message, ConsoleColor.Red);
+                    Output.Message(String.Format("{0}\n", ex.Message), ConsoleColor.Red);
                     continue;
                 }
                 Console.Write("Do you wanna continue ? \n >> ");
