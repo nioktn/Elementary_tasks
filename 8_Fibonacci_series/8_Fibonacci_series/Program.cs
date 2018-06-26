@@ -26,7 +26,7 @@ namespace _8_Fibonacci_series
                     case (2):
                         Console.Write("Enter num lenght: \n");
                         int numLength = Validator.ReadInt2(true);
-                        if (numLength > 19) throw new Exception("Value can't be bigger than 19");
+                        if (numLength > 19) Output.Message("Value can't be bigger than 19", ConsoleColor.Red);
                         else Fibonacci.Display(Fibonacci.CalcFbnc(numLength));
                         break;
                     case (0):
